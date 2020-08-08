@@ -24,7 +24,7 @@ namespace DgBar.Infra.Data.Repository
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            GC.SuppressFinalize(this);
         }
 
         public TEntity GetById(Guid id)

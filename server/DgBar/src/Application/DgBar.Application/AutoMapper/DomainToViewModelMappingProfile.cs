@@ -12,6 +12,7 @@ namespace DgBar.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Produto, ProdutoViewModel>();
+            CreateMap<Comanda, ComandaViewModel>();
         }
     }
 }

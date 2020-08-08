@@ -24,10 +24,13 @@ namespace DgBar.Infra.CrossCutting.IoC
             service.AddScoped<IBusHandler, InMemoryBus>();
             // Application
             service.AddScoped<IProdutoApplicationService, ProdutoApplicationService>();
+            service.AddScoped<IComandaApplicationService, ComandaApplicationService>();
             // Domain 
             service.AddScoped<IRequestHandler<CadastrarNovoProdutoCommand, bool>, ProdutoCommandHandler>();
+            service.AddScoped<IRequestHandler<CadastrarNovaComandaCommand, bool>, ComandaCommandHandler>();
             // Infra 
             service.AddScoped<IProdutoRepository, ProdutoRepository>();
+            service.AddScoped<IComandaRepository, ComandaRepository>();
             service.AddScoped<IUnitOfWork, UnitOfWork>();
             service.AddScoped<DgBarContext>();
         }

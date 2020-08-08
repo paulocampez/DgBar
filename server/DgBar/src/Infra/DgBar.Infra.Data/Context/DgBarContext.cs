@@ -19,6 +19,7 @@ namespace DgBar.Infra.Data.Context
         }
 
         public DbSet<Produto> produtos { get; set; }
+        public DbSet<Comanda> comandas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

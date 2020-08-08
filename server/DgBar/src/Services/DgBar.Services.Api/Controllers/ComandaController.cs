@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DgBar.Application.Interfaces;
+using DgBar.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,36 +13,29 @@ namespace DgBar.Services.Api.Controllers
     [ApiController]
     public class ComandaController : ControllerBase
     {
-        // GET: api/Comanda
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IComandaApplicationService _comandaApplicationService;
+        public ComandaController(IComandaApplicationService  comandaApplicationService)
         {
-            return new string[] { "value1", "value2" };
+            _comandaApplicationService = comandaApplicationService;
         }
 
-        // GET: api/Comanda/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Comanda
+        
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void RegistrarItem([FromBody] RegistrarPedidosViewModel dto)
         {
+            _comandaApplicationService.RegistrarItem(dto);
         }
 
-        // PUT: api/Comanda/5
+        [HttpPost("{id}")]
+        public void FecharComanda(int id)
+        {
+            _comandaApplicationService.FecharComanda(id);
+        }
+
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void ResetarComanda(int id)
         {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            _comandaApplicationService.ResetarComanda(id);
         }
     }
 }

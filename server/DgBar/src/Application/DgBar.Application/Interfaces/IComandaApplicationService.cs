@@ -10,5 +10,6 @@ namespace DgBar.Application.Interfaces
         void ResetarComanda(int id);
         void RegistrarItem(RegistrarPedidosViewModel dto);
         void FecharComanda(int id);
+        ComandaViewModel AbrirComanda();
     }
 }

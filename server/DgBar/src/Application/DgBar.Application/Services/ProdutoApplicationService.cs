@@ -25,7 +25,6 @@ namespace DgBar.Application.Services
 
         public ProdutoViewModel Create(ProdutoViewModel produtoViewModel)
         {
-            //var produtoViewModel = new ProdutoViewModel();
             var registerCommand = _mapper.Map<CadastrarNovoProdutoCommand>(produtoViewModel);
             _bus.SendCommand(registerCommand);
             return _mapper.Map<ProdutoViewModel>(_repository.GetById(produtoViewModel.Id));

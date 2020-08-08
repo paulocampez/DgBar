@@ -32,6 +32,14 @@ namespace DgBar.Services.Api.Controllers
             _comandaApplicationService.FecharComanda(id);
         }
 
+
+
+        [HttpPost("AbrirComanda")]
+        public ComandaViewModel AbrirComanda()
+        {
+            return _comandaApplicationService.AbrirComanda();
+        }
+
         [HttpPut("{id}")]
         public void ResetarComanda(int id)
         {

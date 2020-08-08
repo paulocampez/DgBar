@@ -26,6 +26,7 @@ namespace DgBar.Services.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +39,8 @@ namespace DgBar.Services.Api
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -45,6 +48,11 @@ namespace DgBar.Services.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dg Bar");
             });
         }
     }

@@ -7,4 +7,8 @@
     <StartupObject />
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DgBar.Domain.Core\DgBar.Domain.Core.csproj" />
+  </ItemGroup>
+
 </Project>

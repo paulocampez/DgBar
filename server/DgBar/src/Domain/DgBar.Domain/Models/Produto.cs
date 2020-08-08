@@ -7,11 +7,13 @@ namespace DgBar.Domain.Models
 {
     public class Produto : Entity
     {
-        public Produto(Guid id)
+        public Produto(Guid id, string descricao)
         {
             Id = id;
+            Descricao = descricao;
         }
 
         public Guid Id { get; set; }
+        public string Descricao { get; set; }
     }
 }

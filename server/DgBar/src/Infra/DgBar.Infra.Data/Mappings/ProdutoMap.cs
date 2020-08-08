@@ -12,6 +12,7 @@ namespace DgBar.Infra.Data.Mappings
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
             builder.Property(c => c.Id).IsRequired();
+            builder.Property(c => c.Descricao);
         }
     }
 }

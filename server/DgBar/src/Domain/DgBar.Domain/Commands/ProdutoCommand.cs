@@ -8,5 +8,6 @@ namespace DgBar.Domain.Commands
     public abstract class ProdutoCommand : Command
     {
         public Guid Id { get; set; }
+        public string Descricao { get; set; }
     }
 }

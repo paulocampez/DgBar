@@ -19,12 +19,17 @@ namespace DgBar.Infra.Data.Repository
 
         public void Add(TEntity obj)
         {
-            throw new NotImplementedException();
+            DbSet.Add(obj);
         }
 
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        public TEntity GetById(Guid id)
+        {
+            return DbSet.Find(id);
         }
     }
 }

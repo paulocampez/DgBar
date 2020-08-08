@@ -6,8 +6,9 @@ namespace DgBar.Domain.Commands
 {
     public class CadastrarNovoProdutoCommand : ProdutoCommand
     {
-        public CadastrarNovoProdutoCommand()
+        public CadastrarNovoProdutoCommand(string descricao)
         {
+            Descricao = descricao;
         }
     }
 }

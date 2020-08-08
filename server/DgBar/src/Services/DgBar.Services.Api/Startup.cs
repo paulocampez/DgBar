@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MediatR;
 using AutoMapper;
+using DgBar.Infra.CrossCutting.IoC;
 
 namespace DgBar.Services.Api
 {
@@ -69,6 +70,7 @@ namespace DgBar.Services.Api
         private static void RegistrarServicos(IServiceCollection services)
         {
             // dependencias de outras camadas
+            Bootstrapper.RegisterServices(services);
         }
     }
 }

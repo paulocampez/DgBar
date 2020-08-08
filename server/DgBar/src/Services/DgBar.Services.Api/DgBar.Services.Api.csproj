@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\DgBar.Application\DgBar.Application.csproj" />
+    <ProjectReference Include="..\..\Infra\DgBar.Infra.CrossCutting.IoC\DgBar.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\..\Infra\DgBar.Infra.Data\DgBar.Infra.Data.csproj" />
   </ItemGroup>
 

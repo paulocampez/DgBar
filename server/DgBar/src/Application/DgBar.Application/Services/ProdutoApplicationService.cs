@@ -13,14 +13,21 @@ namespace DgBar.Application.Services
     public class ProdutoApplicationService : IProdutoApplicationService
     {
         private readonly IMapper _mapper;
-        private readonly IBusHandler Bus;
+        private readonly IBusHandler _bus;
         private readonly IProdutoRepository _repository;
 
-        public ProdutoViewModel Create()
+        public ProdutoApplicationService(IProdutoRepository repository, IBusHandler bus, IMapper mapper)
         {
-            var produtoViewModel = new ProdutoViewModel();
+            _mapper = mapper;
+            _bus = bus;
+            _repository = repository;
+        }
+
+        public ProdutoViewModel Create(ProdutoViewModel produtoViewModel)
+        {
+            //var produtoViewModel = new ProdutoViewModel();
             var registerCommand = _mapper.Map<CadastrarNovoProdutoCommand>(produtoViewModel);
-            Bus.SendCommand(registerCommand);
+            _bus.SendCommand(registerCommand);
             return _mapper.Map<ProdutoViewModel>(_repository.GetById(produtoViewModel.Id));
         }
 

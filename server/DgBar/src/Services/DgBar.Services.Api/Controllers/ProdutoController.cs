@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DgBar.Application.Interfaces;
+using DgBar.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,24 +13,16 @@ namespace DgBar.Services.Api.Controllers
     [ApiController]
     public class ProdutoController : ControllerBase
     {
-        // GET: api/Produto
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET: api/Produto/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST: api/Produto
-        [HttpPost]
-        public void Post([FromBody] string value)
+        private readonly IProdutoApplicationService _produtoApplicationService;
+        public ProdutoController(IProdutoApplicationService produtoApplicationService)
         {
+            _produtoApplicationService = produtoApplicationService;
+        }
+
+        [HttpPost]
+        public void Post([FromBody] ProdutoViewModel produtoVm)
+        {
+            _produtoApplicationService.Create(produtoVm);
         }
 
         // PUT: api/Produto/5

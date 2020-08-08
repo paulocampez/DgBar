@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DgBar.Application.AutoMapper;
 
+
 namespace DgBar.Services.Api.Configuration
 {
     public static class AutoMapperSetup
@@ -14,7 +15,7 @@ namespace DgBar.Services.Api.Configuration
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.AddAutoMapperSetup();
+            services.AddAutoMapper(typeof(Startup));
 
             AutoMapperConfig.RegisterMappings();
         }

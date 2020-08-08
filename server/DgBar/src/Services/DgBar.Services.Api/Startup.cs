@@ -2,14 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DgBar.Infra.Data.Context;
+using DgBar.Services.Api.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MediatR;
+using AutoMapper;
 
 namespace DgBar.Services.Api
 {
@@ -25,8 +30,14 @@ namespace DgBar.Services.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DgBarContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddAutoMapperSetup();
+            services.AddMediatR(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
+            RegistrarServicos(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +65,10 @@ namespace DgBar.Services.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dg Bar");
             });
+        }
+        private static void RegistrarServicos(IServiceCollection services)
+        {
+            // dependencias de outras camadas
         }
     }
 }

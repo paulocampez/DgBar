@@ -13,5 +13,8 @@ namespace DgBar.Application.ViewModels
         public Guid Id { get; set; }
 
         public string Descricao { get; set; }
+        public string img { get; set; }
+        public string tipo { get; set; }
+        public int valor { get; set; }
     }
 }

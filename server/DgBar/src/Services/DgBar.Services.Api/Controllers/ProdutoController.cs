@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DgBar.Application.Interfaces;
 using DgBar.Application.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,13 @@ namespace DgBar.Services.Api.Controllers
         public ProdutoController(IProdutoApplicationService produtoApplicationService)
         {
             _produtoApplicationService = produtoApplicationService;
+        }
+
+        [HttpGet]
+        [Route("all")]
+        public IEnumerable<ProdutoViewModel> GetAll()
+        {
+            return _produtoApplicationService.GetAll();
         }
 
         [HttpPost]

@@ -1,25 +1,29 @@
 import React from 'react';
 import logo from './logo.svg';
+import { Navbar } from "./Navbar/Navbar";
+import { GlobalStyle } from "./Styles/GlobalStyle";
 import './App.css';
+import { Banner } from "./Banner/Banner";
+import { Produto } from "./Produto/Produto";
+import { Pedido } from "./Pedido/Pedido";
+import { useAbrirProduto } from "./Hooks/useAbrirProduto";
+import { usePedidos } from "./Hooks/usePedidos";
+import { useTitle } from "./Hooks/useTitle";
+import { Menu } from "./Menu/Menu";
 
 function App() {
+  const abrirProduto = useAbrirProduto();
+  const pedidos = usePedidos();
+  useTitle({ ...abrirProduto, ...pedidos });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit teste<code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <GlobalStyle />
+    <Produto {...abrirProduto} {...pedidos} />
+    <Navbar />
+    <Pedido {...pedidos} {...abrirProduto} />
+    <Banner />
+    <Menu {...abrirProduto} />
+    </>
   );
 }
 

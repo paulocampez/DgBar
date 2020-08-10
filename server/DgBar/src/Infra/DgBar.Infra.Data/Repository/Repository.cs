@@ -3,6 +3,7 @@ using DgBar.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DgBar.Infra.Data.Repository
@@ -21,7 +22,10 @@ namespace DgBar.Infra.Data.Repository
         {
             DbSet.Add(obj);
         }
-
+        public virtual IQueryable<TEntity> GetAll()
+        {
+            return DbSet;
+        }
         public void Dispose()
         {
             GC.SuppressFinalize(this);

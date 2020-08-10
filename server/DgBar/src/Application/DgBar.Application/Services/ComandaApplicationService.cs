@@ -40,7 +40,6 @@ namespace DgBar.Application.Services
             var registerCommand = _mapper.Map<CadastrarNovaComandaCommand>(model);
             _bus.SendCommand(registerCommand);
             return _mapper.Map<ComandaViewModel>(_repository.GetById(registerCommand.Id));
-
         }
 
         public void RegistrarItem(RegistrarPedidosViewModel dto)

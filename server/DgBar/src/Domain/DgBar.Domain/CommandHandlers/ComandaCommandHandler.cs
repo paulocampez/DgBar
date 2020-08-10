@@ -25,6 +25,12 @@ namespace DgBar.Domain.CommandHandlers
         public Task<bool> Handle(CadastrarNovaComandaCommand request, CancellationToken cancellationToken)
         {
             var comanda = new Comanda(request.Id);
+
+            //if (ObterComandaPorId(comanda.Id))
+            //{
+
+            //}
+
             _repository.Add(comanda);
 
             Commit();

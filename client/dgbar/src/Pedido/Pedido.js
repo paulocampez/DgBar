@@ -1,0 +1,124 @@
+import React from "react";
+import styled from "styled-components";
+import {
+  DialogContent,
+  DialogFooter,
+  BotaoConfirma
+} from "../Produto/Produto";
+import { formatPrice } from "../Data/ProdutoData";
+import { getPrice } from "../Produto/Produto";
+
+const PedidoStyled = styled.div`
+  position: fixed;
+  right: 0px;
+  top: 48px;
+  width: 340px;
+  background-color: white;
+  height: calc(100% - 48px);
+  z-index: 10;
+  box-shadow: 4px 0px 5px 4px grey;
+  display: flex;
+  flex-direction: column;
+`;
+
+const PedidoContent = styled(DialogContent)`
+  padding: 20px;
+  height: 100%;
+`;
+
+const PedidoContainer = styled.div`
+  padding: 10px 0px;
+  bpedido-bottom: 1px solid grey;
+  ${({ editable }) =>
+    editable
+      ? `
+    &:hover {
+      cursor: pointer;
+      background-color: #e7e7e7;
+    }
+  `
+      : `
+    pointer-events: none; 
+  `}
+`;
+
+const PedidoItem = styled.div`
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 20px 150px 20px 60px;
+  justify-content: space-between;
+`;
+
+const DetailItem = styled.div`
+  color: gray;
+  font-size: 10px;
+`;
+
+export function Pedido({ pedidos, setPedidos, setAbrirProduto }) {
+  const subtotal = pedidos.reduce((total, pedido) => {
+    return total + getPrice(pedido);
+  }, 0);
+  
+  const total = subtotal;
+
+  const deleteItem = index => {
+    const newPedidos = [...pedidos];
+    newPedidos.splice(index, 1);
+    setPedidos(newPedidos);
+  };
+
+  return (
+    <PedidoStyled>
+      {pedidos.length === 0 ? (
+        <PedidoContent>seu pedido está vazio.</PedidoContent>
+      ) : (
+        <PedidoContent>
+          {" "}
+          <PedidoContainer> Seu Pedido: </PedidoContainer>{" "}
+          {pedidos.map((pedido, index) => (
+            <PedidoContainer editable>
+              <PedidoItem
+                onClick={() => {
+                  setAbrirProduto({ ...pedido, index });
+                }}
+              >
+                <div>{pedido.quantidade}</div>
+                <div>{pedido.descricao}</div>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={e => {
+                    e.stopPropagation();
+                    deleteItem(index);
+                  }}
+                >
+                  🗑
+                </div>
+                <div>{formatPrice(getPrice(pedido))}</div>
+              </PedidoItem>
+              <DetailItem>
+
+              </DetailItem>
+              {pedido.escolha && <DetailItem>{pedido.escolha}</DetailItem>}
+            </PedidoContainer>
+          ))}
+          <PedidoContainer>
+            <PedidoItem>
+              <div />
+              <div>Sub-Total</div>
+              <div>{formatPrice(subtotal)}</div>
+            </PedidoItem>
+
+            <PedidoItem>
+              <div />
+              <div>Total</div>
+              <div>{formatPrice(total)}</div>
+            </PedidoItem>
+          </PedidoContainer>
+        </PedidoContent>
+      )}
+      <DialogFooter>
+        <BotaoConfirma>Fechar Pedido</BotaoConfirma>
+      </DialogFooter>
+    </PedidoStyled>
+  );
+}

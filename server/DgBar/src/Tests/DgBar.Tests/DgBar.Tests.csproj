@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="8.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.0" />
+    <PackageReference Include="Moq" Version="4.14.5" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
@@ -17,6 +19,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\DgBar.Application\DgBar.Application.csproj" />
+    <ProjectReference Include="..\..\Domain\DgBar.Domain\DgBar.Domain.csproj" />
+    <ProjectReference Include="..\..\Infra\DgBar.Infra.CrossCutting.Bus\DgBar.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\..\Services\DgBar.Services.Api\DgBar.Services.Api.csproj" />
   </ItemGroup>
 
 </Project>

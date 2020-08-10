@@ -3,6 +3,7 @@ using DgBar.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DgBar.Domain.CommandHandlers
 {
@@ -23,5 +24,7 @@ namespace DgBar.Domain.CommandHandlers
 
             return false;
         }
+
+        protected Task<bool> Falha() => Task.FromResult(false);
     }
 }

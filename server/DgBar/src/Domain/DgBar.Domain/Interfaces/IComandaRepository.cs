@@ -7,5 +7,6 @@ namespace DgBar.Domain.Interfaces
 {
     public interface IComandaRepository : IRepository<Comanda>
     {
+        public Comanda GetByNumero(int numeroComanda);
     }
 }

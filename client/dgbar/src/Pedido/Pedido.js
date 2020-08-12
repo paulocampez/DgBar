@@ -76,11 +76,7 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto, numeroComanda }) 
     
     <PedidoStyled>
       {(pedidos.length === 0) ? (
-//ABRIR A COMANDA
-     
-      
       <PedidoContent>seu pedido está vazio.</PedidoContent>
-      
       ) : (
         <PedidoContent>
           {" "}
@@ -116,6 +112,7 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto, numeroComanda }) 
         </PedidoContent>
       )}
       <DialogFooter>
+        {numeroComanda == 0 ? (<div></div>) : (
                 <BotaoConfirma onClick={() => {
                   axios({
                     headers: { 'Content-Type': 'application/json'},
@@ -135,6 +132,7 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto, numeroComanda }) 
                   });
                 }}>{""}
                   Realizar Pedido </BotaoConfirma>
+                  )}
       </DialogFooter>
     </PedidoStyled>
   );

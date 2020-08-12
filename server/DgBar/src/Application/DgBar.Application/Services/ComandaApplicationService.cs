@@ -4,8 +4,10 @@ using DgBar.Application.ViewModels;
 using DgBar.Domain.Commands;
 using DgBar.Domain.Core.Bus;
 using DgBar.Domain.Interfaces;
+using DgBar.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DgBar.Application.Services
@@ -28,10 +30,16 @@ namespace DgBar.Application.Services
         {
             GC.SuppressFinalize(this);
         }
-
-        public void FecharComanda(int id)
+        public List<Produto> GetAllProdutos(int numeroComanda)
         {
-            
+            return _repository.GetAll().Where(p => p.NumeroComanda == numeroComanda).First().Produtos;
+        }
+        public void FecharComanda(int numeroComanda)
+        {
+            var comandaModel = _repository.GetAll().Where(p=>p.NumeroComanda == numeroComanda);
+            var fecharComandaCommand = _mapper.Map<FecharComandaCommand>(comandaModel);
+            _bus.SendCommand(fecharComandaCommand);
+            //return _mapper.Map<ComandaViewModel>(_repository.GetById(fecharComandaCommand.Id));
         }
 
         public ComandaViewModel AbrirComanda()

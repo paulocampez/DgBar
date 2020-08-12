@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DgBar.Application.Interfaces;
 using DgBar.Application.ViewModels;
+using DgBar.Domain.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace DgBar.Services.Api.Controllers
     public class ComandaController : ControllerBase
     {
         private readonly IComandaApplicationService _comandaApplicationService;
-        public ComandaController(IComandaApplicationService  comandaApplicationService)
+        public ComandaController(IComandaApplicationService comandaApplicationService)
         {
             _comandaApplicationService = comandaApplicationService;
         }
@@ -27,13 +28,13 @@ namespace DgBar.Services.Api.Controllers
             _comandaApplicationService.RegistrarItens(dto);
         }
 
-        //[HttpPost("{id}")]
-        //public void FecharComanda(int id)
-        //{
-        //    _comandaApplicationService.FecharComanda(id);
-        //}
-
-
+        [HttpPost("FecharComanda")]
+        public List<Produto> FecharComanda(int numeroComanda)
+        {
+            List<Produto> lst = _comandaApplicationService.GetAllProdutos(numeroComanda);
+            _comandaApplicationService.FecharComanda(numeroComanda);
+            return lst;
+        }
 
         [HttpPost("AbrirComanda")]
         public ComandaViewModel AbrirComanda()

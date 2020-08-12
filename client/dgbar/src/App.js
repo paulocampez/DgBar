@@ -35,7 +35,6 @@ function App() {
       .then(function (response) {
         
         comandas.setNumeroComanda(response.data.numeroComanda);
-        console.log(comandas.numeroComanda);
         comandas.numeroComanda = response.data.numeroComanda;
         setNumeroComanda(response.data.numeroComanda)
       })
@@ -44,6 +43,17 @@ function App() {
       });
     }
     else{
+      axios({
+        headers: { 'Content-Type': 'application/json'},
+        url: 'https://localhost:5001/api/Comanda/FecharComanda/' + numeroComanda,
+        method: 'post'
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
       console.log("oipau");
       //Metodo para fechar comanda e a=brir valores
     }

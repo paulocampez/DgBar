@@ -10,5 +10,7 @@ namespace DgBar.Domain.Interfaces
         void Add(TEntity obj);
         TEntity GetById(Guid id);
         IQueryable<TEntity> GetAll();
+
+        void Delete(TEntity obj);
     }
 }

@@ -34,5 +34,14 @@ namespace DgBar.Domain.CommandHandlers
             Commit();
             return Task.FromResult(true);
         }
+        public Task<bool> Handle(FecharComandaCommand request, CancellationToken cancellationToken)
+        {
+            var comanda = new Comanda(request.Id);
+
+            _repository.Delete(comanda);
+
+            Commit();
+            return Task.FromResult(true);
+        }
     }
 }

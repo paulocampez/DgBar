@@ -35,5 +35,9 @@ namespace DgBar.Infra.Data.Repository
         {
             return DbSet.Find(id);
         }
+        public void Delete(TEntity obj)
+        {
+            DbSet.Remove(obj);
+        }
     }
 }

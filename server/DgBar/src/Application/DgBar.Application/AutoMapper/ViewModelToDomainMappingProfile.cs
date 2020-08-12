@@ -16,6 +16,9 @@ namespace DgBar.Application.AutoMapper
 
             CreateMap<ComandaViewModel, CadastrarNovaComandaCommand>()
                .ConstructUsing(c => new CadastrarNovaComandaCommand(c.Produtos));
+
+            CreateMap<ComandaViewModel, FecharComandaCommand>()
+                .ConstructUsing(c => new FecharComandaCommand(c.Produtos));
         }
     }
 }

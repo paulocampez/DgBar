@@ -12,5 +12,10 @@ namespace DgBar.Infra.Data.Repository
         public ComandaRepository(DgBarContext db) : base(db)
         {
         }
+
+        public Comanda GetByNumero(int numeroComanda)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

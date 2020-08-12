@@ -36,8 +36,9 @@ namespace DgBar.Application.Services
         }
         public void FecharComanda(int numeroComanda)
         {
-            var comandaModel = _repository.GetAll().Where(p=>p.NumeroComanda == numeroComanda);
-            var fecharComandaCommand = _mapper.Map<FecharComandaCommand>(comandaModel);
+            var comandaModel = _repository.GetAll().Where(p=>p.NumeroComanda == numeroComanda).FirstOrDefault();
+            var comandaVMTeste = new ComandaViewModel() { Id = comandaModel.Id, NumeroComanda = comandaModel.NumeroComanda, Produtos = comandaModel.Produtos};
+            var fecharComandaCommand = _mapper.Map<FecharComandaCommand>(comandaVMTeste);
             _bus.SendCommand(fecharComandaCommand);
             //return _mapper.Map<ComandaViewModel>(_repository.GetById(fecharComandaCommand.Id));
         }

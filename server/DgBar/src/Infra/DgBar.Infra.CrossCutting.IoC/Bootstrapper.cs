@@ -28,6 +28,8 @@ namespace DgBar.Infra.CrossCutting.IoC
             // Domain 
             service.AddScoped<IRequestHandler<CadastrarNovoProdutoCommand, bool>, ProdutoCommandHandler>();
             service.AddScoped<IRequestHandler<CadastrarNovaComandaCommand, bool>, ComandaCommandHandler>();
+            service.AddScoped<IRequestHandler<FecharComandaCommand, bool>, FecharComandaCommandHandler>();
+
             // Infra 
             service.AddScoped<IProdutoRepository, ProdutoRepository>();
             service.AddScoped<IComandaRepository, ComandaRepository>();

@@ -45,8 +45,9 @@ function App() {
     else{
       axios({
         headers: { 'Content-Type': 'application/json'},
-        url: 'https://localhost:5001/api/Comanda/FecharComanda/' + numeroComanda,
-        method: 'post'
+        url: 'https://localhost:5001/api/Comanda/FecharComanda/',
+        method: 'post',
+        data: numeroComanda
       })
       .then(function (response) {
         console.log(response)

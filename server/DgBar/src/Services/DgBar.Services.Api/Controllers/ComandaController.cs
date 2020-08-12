@@ -29,7 +29,7 @@ namespace DgBar.Services.Api.Controllers
         }
 
         [HttpPost("FecharComanda")]
-        public List<Produto> FecharComanda(int numeroComanda)
+        public List<Produto> FecharComanda([FromBody] int numeroComanda)
         {
             List<Produto> lst = _comandaApplicationService.GetAllProdutos(numeroComanda);
             _comandaApplicationService.FecharComanda(numeroComanda);

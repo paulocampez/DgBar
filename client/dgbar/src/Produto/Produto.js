@@ -6,6 +6,7 @@ import { formatPrice } from "../Data/ProdutoData";
 import { Quantidade } from "./Quantidade";
 import { useQuantidade } from "../Hooks/useQuantidade";
 import { useEscolha } from "../Hooks/useEscolha";
+import { useComanda } from "../Hooks/useComanda";
 import { Escolhas } from "./Escolhas";
 
 const Dialog = styled.div`
@@ -86,11 +87,12 @@ export function getPrice(pedido) {
 }
 
 
-function ProdutoContainer({ abrirProduto, setAbrirProduto, setPedidos, pedidos }) {
+function ProdutoContainer({ abrirProduto, setAbrirProduto, setPedidos, pedidos, setComanda }) {
   const quantidade = useQuantidade(abrirProduto && abrirProduto.quantidade);
   const escolhaRadio = useEscolha(abrirProduto.escolha);
+  const comanda = useComanda();
   const isEditing = abrirProduto.index > -1;
-
+  const numero = setComanda;
   function close() {
     setAbrirProduto();
   }
@@ -98,7 +100,9 @@ function ProdutoContainer({ abrirProduto, setAbrirProduto, setPedidos, pedidos }
   const pedido = {
     ...abrirProduto,
     quantidade: quantidade.value,
-    escolha: escolhaRadio.value
+    escolha: escolhaRadio.value,
+    numero: numero,
+    teste: comanda
   };
 
   function editPedido() {

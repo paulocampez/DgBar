@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DgBar.Application.Interfaces;
 using DgBar.Application.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,18 +20,18 @@ namespace DgBar.Services.Api.Controllers
             _comandaApplicationService = comandaApplicationService;
         }
 
-        
-        [HttpPost]
-        public void RegistrarItem([FromBody] RegistrarPedidosViewModel dto)
-        {
-            _comandaApplicationService.RegistrarItem(dto);
-        }
 
         [HttpPost("{id}")]
-        public void FecharComanda(int id)
+        public void RegistrarItem([FromBody] List<ProdutoViewModel> dto, int id)
         {
-            _comandaApplicationService.FecharComanda(id);
+            _comandaApplicationService.RegistrarItens(dto);
         }
+
+        //[HttpPost("{id}")]
+        //public void FecharComanda(int id)
+        //{
+        //    _comandaApplicationService.FecharComanda(id);
+        //}
 
 
 

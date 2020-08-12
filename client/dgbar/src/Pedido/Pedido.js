@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
   DialogContent,
@@ -7,6 +7,7 @@ import {
 } from "../Produto/Produto";
 import { formatPrice } from "../Data/ProdutoData";
 import { getPrice } from "../Produto/Produto";
+import axios from "axios";
 
 const PedidoStyled = styled.div`
   position: fixed;
@@ -54,7 +55,7 @@ const DetailItem = styled.div`
   font-size: 10px;
 `;
 
-export function Pedido({ pedidos, setPedidos, setAbrirProduto }) {
+export function Pedido({ pedidos, setPedidos, setAbrirProduto, numeroComanda }) {
   const subtotal = pedidos.reduce((total, pedido) => {
     return total + getPrice(pedido);
   }, 0);
@@ -66,11 +67,20 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto }) {
     newPedidos.splice(index, 1);
     setPedidos(newPedidos);
   };
-
+  const deleteAllItem = index => {
+    const newPedidos = [...pedidos];
+    newPedidos.splice(0, newPedidos.length);
+    setPedidos(newPedidos);
+  };
   return (
+    
     <PedidoStyled>
-      {pedidos.length === 0 ? (
-        <PedidoContent>seu pedido está vazio.</PedidoContent>
+      {(pedidos.length === 0) ? (
+//ABRIR A COMANDA
+     
+      
+      <PedidoContent>seu pedido está vazio.</PedidoContent>
+      
       ) : (
         <PedidoContent>
           {" "}
@@ -93,7 +103,7 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto }) {
                 >
                   🗑
                 </div>
-                <div>{formatPrice(getPrice(pedido))}</div>
+                {/* <div>{formatPrice(getPrice(pedido))}</div> */}
               </PedidoItem>
               <DetailItem>
 
@@ -102,22 +112,29 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto }) {
             </PedidoContainer>
           ))}
           <PedidoContainer>
-            <PedidoItem>
-              <div />
-              <div>Sub-Total</div>
-              <div>{formatPrice(subtotal)}</div>
-            </PedidoItem>
-
-            <PedidoItem>
-              <div />
-              <div>Total</div>
-              <div>{formatPrice(total)}</div>
-            </PedidoItem>
           </PedidoContainer>
         </PedidoContent>
       )}
       <DialogFooter>
-        <BotaoConfirma>Fechar Pedido</BotaoConfirma>
+                <BotaoConfirma onClick={() => {
+                  axios({
+                    headers: { 'Content-Type': 'application/json'},
+                    url: 'https://localhost:5001/api/Comanda/' + numeroComanda,
+                    method: 'post',
+                    data: pedidos,
+                    numeroComanda: numeroComanda
+                  })
+                  .then(function (response) {
+                      deleteAllItem(pedidos.length);
+                      console.log(response);
+                      alert("Pedido realizado !")
+                  })
+                  .catch(function (error) {
+                     // your action on error success
+                      console.log(error);
+                  });
+                }}>{""}
+                  Realizar Pedido </BotaoConfirma>
       </DialogFooter>
     </PedidoStyled>
   );

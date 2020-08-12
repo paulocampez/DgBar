@@ -5,6 +5,7 @@ using DgBar.Domain.Models;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,10 +27,7 @@ namespace DgBar.Domain.CommandHandlers
         {
             var comanda = new Comanda(request.Id);
 
-            //if (ObterComandaPorId(comanda.Id))
-            //{
-
-            //}
+            comanda.NumeroComanda = _repository.GetAll().Count() + 1;
 
             _repository.Add(comanda);
 

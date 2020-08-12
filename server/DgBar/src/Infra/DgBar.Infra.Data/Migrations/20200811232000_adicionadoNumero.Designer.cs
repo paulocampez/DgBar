@@ -4,14 +4,16 @@ using DgBar.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DgBar.Infra.Data.Migrations
 {
     [DbContext(typeof(DgBarContext))]
-    partial class DgBarContextModelSnapshot : ModelSnapshot
+    [Migration("20200811232000_adicionadoNumero")]
+    partial class adicionadoNumero
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

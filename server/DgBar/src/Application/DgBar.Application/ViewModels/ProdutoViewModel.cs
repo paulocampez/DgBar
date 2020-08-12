@@ -16,5 +16,6 @@ namespace DgBar.Application.ViewModels
         public string img { get; set; }
         public string tipo { get; set; }
         public int valor { get; set; }
+        public int quantidade { get; set; }
     }
 }

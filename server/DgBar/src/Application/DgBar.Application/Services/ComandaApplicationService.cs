@@ -42,9 +42,9 @@ namespace DgBar.Application.Services
             return _mapper.Map<ComandaViewModel>(_repository.GetById(registerCommand.Id));
         }
 
-        public void RegistrarItem(RegistrarPedidosViewModel dto)
+        public void RegistrarItens(IEnumerable<ProdutoViewModel> dto)
         {
-            
+            //Registrar pedido e fazer validacoes... retornar erro caso esteja adicionando 3 sucos
         }
 
         public void ResetarComanda(int id)

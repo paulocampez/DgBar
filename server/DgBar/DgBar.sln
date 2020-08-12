@@ -35,8 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DgBar.Infra.Data", "src\Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DgBar.Tests", "src\Tests\DgBar.Tests\DgBar.Tests.csproj", "{83FA9400-365C-40B0-996F-83A01E830918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DgBar.UI.Web", "src\Presentation\DgBar.UI.Web\DgBar.UI.Web.csproj", "{315D7584-7D07-430E-BAC4-AEAAB6371B68}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,10 +73,6 @@ Global
 		{83FA9400-365C-40B0-996F-83A01E830918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83FA9400-365C-40B0-996F-83A01E830918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83FA9400-365C-40B0-996F-83A01E830918}.Release|Any CPU.Build.0 = Release|Any CPU
-		{315D7584-7D07-430E-BAC4-AEAAB6371B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{315D7584-7D07-430E-BAC4-AEAAB6371B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{315D7584-7D07-430E-BAC4-AEAAB6371B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{315D7584-7D07-430E-BAC4-AEAAB6371B68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,7 +93,6 @@ Global
 		{DFC8829D-5A48-4E07-8FD5-2638A68EFF79} = {DC00C0EA-A0E6-4D2F-9922-5C8207EE7DDD}
 		{C6ECDDBA-49FD-47E8-BBB9-6BCE3AB20254} = {DC00C0EA-A0E6-4D2F-9922-5C8207EE7DDD}
 		{83FA9400-365C-40B0-996F-83A01E830918} = {FC9EE7F0-6959-42BC-88E2-137D573BD2B1}
-		{315D7584-7D07-430E-BAC4-AEAAB6371B68} = {EFFBD670-3D38-48CC-BF27-FC0BA3783080}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43A24440-A16C-4F66-99DE-649FF62169AB}

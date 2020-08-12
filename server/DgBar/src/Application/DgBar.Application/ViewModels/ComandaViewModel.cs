@@ -14,7 +14,7 @@ namespace DgBar.Application.ViewModels
         }
 
         public Guid Id { get; set; }
-
+        public int NumeroComanda { get; set; }
         public List<Produto> Produtos { get; set; }
     }
 }

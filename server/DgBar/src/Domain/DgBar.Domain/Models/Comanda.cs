@@ -15,5 +15,6 @@ namespace DgBar.Domain.Models
         public Guid Id { get; set; }
 
         public List<Produto> Produtos { get; }
+        public int NumeroComanda { get; set; }
     }
 }

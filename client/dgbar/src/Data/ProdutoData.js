@@ -14,7 +14,7 @@ export function formatPrice(valor) {
 
 
 // async function testee(){
-//   return await axios.get('http://localhost:5001/api/Produto/all').then(res=>res.data);
+//   return await axios.get('https://localhost:5001/api/Produto/all').then(res=>res.data);
 
 // }
 

@@ -35,7 +35,7 @@ function App() {
       if(numeroComanda == 0){
       axios({
         headers: { 'Content-Type': 'application/json'},
-        url: 'http://localhost:5001/api/Comanda/AbrirComanda',
+        url: 'https://localhost:5001/api/Comanda/AbrirComanda',
         method: 'post'
       })
       .then(function (response) {
@@ -51,7 +51,7 @@ function App() {
     else{
       axios({
         headers: { 'Content-Type': 'application/json'},
-        url: 'http://localhost:5001/api/Comanda/FecharComanda/',
+        url: 'https://localhost:5001/api/Comanda/FecharComanda/',
         method: 'post',
         data: numeroComanda
       })
@@ -67,7 +67,7 @@ function App() {
     <BotaoReset onClick={() => {
       axios({
         headers: { 'Content-Type': 'application/json'},
-        url: 'http://localhost:5001/api/Comanda/ResetarComanda/',
+        url: 'https://localhost:5001/api/Comanda/ResetarComanda/',
         method: 'post',
         data: numeroComanda
       })

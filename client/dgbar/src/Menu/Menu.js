@@ -18,7 +18,7 @@ export function Menu({ setAbrirProduto }) {
   
   useEffect(() => {
     fetch(
-      `https://localhost:5001/api/Produto/all`,
+      `http://localhost:5001/api/Produto/all`,
       {
         method: "GET"
       }

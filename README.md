@@ -44,6 +44,10 @@ Este é um projeto para avaliação técnica da ClearSale. Ele demonstra uso de 
 ## Autor 👦
 * **Paulo Campez** - *Desenvolvedor* - [GitHub](https://github.com/paulocampez) - [Linkedin](https://www.linkedin.com/in/paulocampez/)
 
+## TODO
+- Terminar de setar containers
+- Implementar autenticação na API 
+
 ## License 📃
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

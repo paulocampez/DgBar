@@ -116,7 +116,7 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto, numeroComanda }) 
                 <BotaoConfirma onClick={() => {
                   axios({
                     headers: { 'Content-Type': 'application/json'},
-                    url: 'https://localhost:5001/api/Comanda/' + numeroComanda,
+                    url: 'http://localhost:5001/api/Comanda/' + numeroComanda,
                     method: 'post',
                     data: pedidos,
                     numeroComanda: numeroComanda

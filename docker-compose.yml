@@ -7,10 +7,20 @@ services:
       - api
     ports:
       - 3000:80
-    networks:
-      - dgbarapi
 
   api:
     build: server/DgBar
     ports:
     - 5001:80
+    
+  mssql:
+    image: microsoft/mssql-server-windows-developer
+    environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=myPassword
+        - MSSQL_PID=Enterprise
+        - attach_dbs="[{'dbName':'myDB','dbFiles'['c:\\db\\DgBar.MDF','c:\\db\\DgBar.LDF']}]"
+    ports:
+        - '1433:1433'
+    volumes:
+        - d:\dockershare\data:c:/db

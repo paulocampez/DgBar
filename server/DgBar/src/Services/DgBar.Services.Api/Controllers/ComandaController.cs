@@ -21,19 +21,21 @@ namespace DgBar.Services.Api.Controllers
             _comandaApplicationService = comandaApplicationService;
         }
 
-
+        [HttpGet]
+        public IQueryable<Comanda> GetAll()
+        {
+            return _comandaApplicationService.GetAllComandas();
+        }
         [HttpPost("{id}")]
         public void RegistrarItem([FromBody] List<ProdutoViewModel> dto, int id)
         {
-            _comandaApplicationService.RegistrarItens(dto);
+            _comandaApplicationService.RegistrarItens(dto, id);
         }
 
         [HttpPost("FecharComanda")]
-        public List<Produto> FecharComanda([FromBody] int numeroComanda)
+        public ComandaViewModel FecharComanda([FromBody] int numeroComanda)
         {
-            List<Produto> lst = _comandaApplicationService.GetAllProdutos(numeroComanda);
-            _comandaApplicationService.FecharComanda(numeroComanda);
-            return lst;
+            return _comandaApplicationService.FecharComanda(numeroComanda);
         }
 
         [HttpPost("AbrirComanda")]

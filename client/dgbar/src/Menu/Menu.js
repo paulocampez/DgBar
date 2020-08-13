@@ -12,7 +12,7 @@ const MenuStyled = styled.div`
   margin: 0px 400px 50px 20px;
 `;
 
-export function Menu({ setAbrirProduto, comandas }) {
+export function Menu({ setAbrirProduto }) {
 
   const [produtosList, setAbrirProdutos] = useState([]);
   

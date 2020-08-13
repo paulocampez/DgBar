@@ -25,16 +25,17 @@ namespace DgBar.Tests
             var fakeMediator = new Mock<IMediator>();
             var fakedResult = new TestResult(new TestCase());
             var mediator = new InMemoryBus(fakeMediator.Object);
-            var comandaModel = new Comanda(Guid.NewGuid());
+            //var comandaModel = new Comanda(Guid.NewGuid(), );
             var comandaVM = new ComandaViewModel();
             var mockRepo = new Mock<IComandaRepository>();
+            var mockRepoProduto = new Mock<IProdutoRepository>();
             var mapperMock = new Mock<IMapper>();
 
             //implementar quando existir o metodo get no repositorio
             //mockRepo.Setup(repo => repo.GetAll()).Returns(Task.FromResult(GetAllTestProduto()).Result);
-            mapperMock.Setup(m => m.Map<Comanda, ComandaViewModel>(comandaModel)).Returns(comandaVM);
+            //mapperMock.Setup(m => m.Map<Comanda, ComandaViewModel>(comandaModel)).Returns(comandaVM);
 
-            var service = new ComandaApplicationService(mockRepo.Object, mediator, mapperMock.Object);
+            var service = new ComandaApplicationService(mockRepo.Object, mediator, mapperMock.Object, mockRepoProduto.Object);
             _controller = new ComandaController(service);
         }
 

@@ -12,34 +12,22 @@ using System.Threading.Tasks;
 
 namespace DgBar.Domain.CommandHandlers
 {
-    public class ComandaCommandHandler : CommandHandler, IRequestHandler<CadastrarNovaComandaCommand, bool>
+    public class RegistrarPedidoCommandHandler : CommandHandler, IRequestHandler<RegistrarPedidoCommand, bool>
     {
         private readonly IBusHandler _bus;
         private readonly IComandaRepository _repository;
+        private readonly IProdutoRepository _repositoryP;
 
-        public ComandaCommandHandler(IComandaRepository repository, IUnitOfWork uow, IBusHandler bus) : base(uow, bus)
+        public RegistrarPedidoCommandHandler(IComandaRepository repository, IUnitOfWork uow, IBusHandler bus) : base(uow, bus)
         {
             _bus = bus;
             _repository = repository;
         }
 
-        public Task<bool> Handle(CadastrarNovaComandaCommand request, CancellationToken cancellationToken)
+        public Task<bool> Handle(RegistrarPedidoCommand request, CancellationToken cancellationToken)
         {
             var comanda = new Comanda(request.Id, request.NumeroComanda);
-
-            comanda.NumeroComanda = _repository.GetAll().Count() + 1;
-
             _repository.Add(comanda);
-
-            Commit();
-            return Task.FromResult(true);
-        }
-        public Task<bool> Handle(FecharComandaCommand request, CancellationToken cancellationToken)
-        {
-            var comanda = new Comanda(request.Id, request.NumeroComanda);
-
-            _repository.Delete(comanda);
-
             Commit();
             return Task.FromResult(true);
         }

@@ -24,7 +24,7 @@ namespace DgBar.Domain.CommandHandlers
 
         public Task<bool> Handle(CadastrarNovoProdutoCommand request, CancellationToken cancellationToken)
         {
-            var produto = new Produto(request.Id, request.Descricao);
+            var produto = new Produto(request.Id, request.Descricao, request.NumeroComanda, request.Valor, request.Quantidade, request.Desconto, request.Observacao);
             _repository.Add(produto);
 
             Commit();

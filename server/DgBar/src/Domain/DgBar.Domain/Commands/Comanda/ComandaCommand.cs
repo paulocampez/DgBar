@@ -10,5 +10,6 @@ namespace DgBar.Domain.Commands
     {
         public Guid Id { get; set; }
         public List<Produto> Produtos { get; set; }
+        public int NumeroComanda { get; set; }
     }
 }

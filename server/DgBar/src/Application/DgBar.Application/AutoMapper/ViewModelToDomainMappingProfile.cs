@@ -12,13 +12,16 @@ namespace DgBar.Application.AutoMapper
         public ViewModelToDomainMappingProfile()
         {
             CreateMap<ProdutoViewModel, CadastrarNovoProdutoCommand>()
-                .ConstructUsing(c => new CadastrarNovoProdutoCommand(c.Descricao));
+                .ConstructUsing(c => new CadastrarNovoProdutoCommand(c.Descricao, c.valor, c.quantidade, c.desconto, c.observacao));
 
             CreateMap<ComandaViewModel, CadastrarNovaComandaCommand>()
                .ConstructUsing(c => new CadastrarNovaComandaCommand(c.Produtos));
 
             CreateMap<ComandaViewModel, FecharComandaCommand>()
                 .ConstructUsing(c => new FecharComandaCommand(c.Produtos));
+
+            CreateMap<ComandaViewModel, RegistrarPedidoCommand>()
+                .ConstructUsing(c => new RegistrarPedidoCommand(c.Produtos));
         }
     }
 }

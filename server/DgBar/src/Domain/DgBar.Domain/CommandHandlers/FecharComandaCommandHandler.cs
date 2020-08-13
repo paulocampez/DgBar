@@ -25,7 +25,7 @@ namespace DgBar.Domain.CommandHandlers
 
         public Task<bool> Handle(FecharComandaCommand request, CancellationToken cancellationToken)
         {
-            var comanda = new Comanda(request.Id);
+            var comanda = new Comanda(request.Id, request.NumeroComanda);
 
             //_repository.Delete(comanda);
 

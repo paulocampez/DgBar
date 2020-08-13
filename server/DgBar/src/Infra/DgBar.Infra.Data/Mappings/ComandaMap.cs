@@ -13,6 +13,7 @@ namespace DgBar.Infra.Data.Mappings
         {
             builder.Property(c => c.Id).IsRequired();
             builder.Property(c => c.Produtos);
+            builder.Property(c => c.NumeroComanda);
         }
     }
 }

@@ -5,15 +5,19 @@ import { GlobalStyle } from "./Styles/GlobalStyle";
 import './App.css';
 import { Banner } from "./Banner/Banner";
 import { BotaoConfirma, Produto } from "./Produto/Produto";
+import { Checkout } from "./Checkout/Checkout";
 import { Pedido } from "./Pedido/Pedido";
 import { useAbrirProduto } from "./Hooks/useAbrirProduto";
+import { useAbrirCheckout } from "./Hooks/useAbrirCheckout";
 import { usePedidos } from "./Hooks/usePedidos";
 import { useTitle } from "./Hooks/useTitle";
 import { useComanda } from "./Hooks/useComanda";
 import { Menu } from "./Menu/Menu";
 import axios from "axios";
+
 function App() {
   const abrirProduto = useAbrirProduto();
+  const abrirCheckout = useAbrirCheckout();
   const pedidos = usePedidos();
   const [numeroComanda, setNumeroComanda] = useState(0);
   const comandas = useComanda();
@@ -22,6 +26,8 @@ function App() {
     <>
     <GlobalStyle />
     <Produto {...abrirProduto} {...pedidos} {...comandas}/>
+    <Checkout {...abrirCheckout} {...pedidos} {...comandas}/>
+    {/* <Produto {...abrirProduto} {...pedidos} {...comandas}/> */}
     <Navbar />
     <Pedido {...pedidos} {...abrirProduto} {...comandas} />
     <Banner />
@@ -51,6 +57,7 @@ function App() {
       })
       .then(function (response) {
         console.log(response)
+        abrirCheckout.setAbrirCheckout(response);
       })
       .catch(function (error) {
           console.log(error);

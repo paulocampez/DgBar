@@ -24,7 +24,7 @@ namespace DgBar.Tests
             var fakeMediator = new Mock<IMediator>();
             var fakedResult = new TestResult(new TestCase());
             var mediator = new InMemoryBus(fakeMediator.Object);
-            var produtoModel = new Produto(Guid.NewGuid(), "Cerveja");
+            var produtoModel = new Produto(Guid.NewGuid(), "Cerveja", 11,1, 1, 1, "");
             var produtoVM = new ProdutoViewModel();
             var mockRepo = new Mock<IProdutoRepository>();
             var mapperMock = new Mock<IMapper>();

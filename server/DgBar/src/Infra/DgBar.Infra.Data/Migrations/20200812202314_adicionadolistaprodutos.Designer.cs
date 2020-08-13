@@ -4,14 +4,16 @@ using DgBar.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DgBar.Infra.Data.Migrations
 {
     [DbContext(typeof(DgBarContext))]
-    partial class DgBarContextModelSnapshot : ModelSnapshot
+    [Migration("20200812202314_adicionadolistaprodutos")]
+    partial class adicionadolistaprodutos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,23 +44,8 @@ namespace DgBar.Infra.Data.Migrations
                     b.Property<Guid?>("ComandaId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Desconto")
-                        .HasColumnType("int");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NumeroComanda")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Observacao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantidade")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Valor")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

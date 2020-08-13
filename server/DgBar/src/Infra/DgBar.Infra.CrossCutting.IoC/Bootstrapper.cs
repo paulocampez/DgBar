@@ -29,6 +29,7 @@ namespace DgBar.Infra.CrossCutting.IoC
             service.AddScoped<IRequestHandler<CadastrarNovoProdutoCommand, bool>, ProdutoCommandHandler>();
             service.AddScoped<IRequestHandler<CadastrarNovaComandaCommand, bool>, ComandaCommandHandler>();
             service.AddScoped<IRequestHandler<FecharComandaCommand, bool>, FecharComandaCommandHandler>();
+            service.AddScoped<IRequestHandler<RegistrarPedidoCommand, bool>, RegistrarPedidoCommandHandler>();
 
             // Infra 
             service.AddScoped<IProdutoRepository, ProdutoRepository>();

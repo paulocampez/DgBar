@@ -17,5 +17,8 @@ namespace DgBar.Application.ViewModels
         public string tipo { get; set; }
         public int valor { get; set; }
         public int quantidade { get; set; }
+        public int numeroComanda { get; set; }
+        public int desconto { get; set; }
+        public string observacao { get; set; }
     }
 }

@@ -122,9 +122,16 @@ export function Pedido({ pedidos, setPedidos, setAbrirProduto, numeroComanda }) 
                     numeroComanda: numeroComanda
                   })
                   .then(function (response) {
+                    if(response.data == true)
+                  {
+                    deleteAllItem(pedidos.length);
+                    console.log(response);
+                    alert("Pedido realizado !")
+                  }
+                     else{
+                      alert("Só é permitido 3 sucos por comanda!")
                       deleteAllItem(pedidos.length);
-                      console.log(response);
-                      alert("Pedido realizado !")
+                     }
                   })
                   .catch(function (error) {
                      // your action on error success

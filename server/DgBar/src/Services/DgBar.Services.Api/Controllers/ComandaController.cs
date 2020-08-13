@@ -27,9 +27,9 @@ namespace DgBar.Services.Api.Controllers
             return _comandaApplicationService.GetAllComandas();
         }
         [HttpPost("{id}")]
-        public void RegistrarItem([FromBody] List<ProdutoViewModel> dto, int id)
+        public bool RegistrarItem([FromBody] List<ProdutoViewModel> dto, int id)
         {
-            _comandaApplicationService.RegistrarItens(dto, id);
+            return _comandaApplicationService.RegistrarItens(dto, id);
         }
 
         [HttpPost("FecharComanda")]

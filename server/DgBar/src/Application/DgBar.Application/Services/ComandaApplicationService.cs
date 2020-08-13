@@ -81,17 +81,21 @@ namespace DgBar.Application.Services
             return _mapper.Map<ComandaViewModel>(_repository.GetById(registerCommand.Id));
         }
 
-        public void RegistrarItens(IEnumerable<ProdutoViewModel> dto, int comanda)
+        public bool RegistrarItens(IEnumerable<ProdutoViewModel> dto, int comanda)
         {
-            ValidaProdutos(dto, comanda);
+            bool success = true;
+            success = ValidaProdutos(dto, comanda);
 
-
-            foreach (var produtoItem in dto)
+            if (success)
             {
-                produtoItem.numeroComanda = comanda;
-                var registerCommand = _mapper.Map<CadastrarNovoProdutoCommand>(produtoItem);
-                _bus.SendCommand(registerCommand);
+                foreach (var produtoItem in dto)
+                {
+                    produtoItem.numeroComanda = comanda;
+                    var registerCommand = _mapper.Map<CadastrarNovoProdutoCommand>(produtoItem);
+                    _bus.SendCommand(registerCommand);
+                }
             }
+            return success;
         }
 
         private List<Produto> AplicarPromocao(List<Produto> dto)
@@ -127,12 +131,35 @@ namespace DgBar.Application.Services
             return dto;
         }
 
-        private void ValidaProdutos(IEnumerable<ProdutoViewModel> dto, int comanda)
+        private bool ValidaProdutos(IEnumerable<ProdutoViewModel> dto, int comanda)
         {
-            var allProducts = _repositoryProduto.GetAll().Where(p => p.NumeroComanda == comanda);
+            var success = true;
+            dto = DesagrupaProdutoViewModel(dto.ToList());
 
-            if (allProducts.Where(p => p.Descricao == "Suco").Count() > 2)
-                throw new Exception("Só é permitido 3 sucos por comanda");
+            var allProducts = _repositoryProduto.GetAll().Where(p => p.NumeroComanda == comanda).ToList();
+
+            allProducts = DesagrupaProdutos(allProducts);
+
+            int sucos = allProducts.Where(p => p.Descricao == "Suco").Count() + dto.Where(p => p.Descricao == "Suco").Count();
+
+            if (sucos > 2)
+                success = false;
+
+            return success;
+        }
+
+        private List<ProdutoViewModel> DesagrupaProdutoViewModel(List<ProdutoViewModel> dto)
+        {
+            List<ProdutoViewModel> newList = new List<ProdutoViewModel>();
+            foreach (var item in dto)
+            {
+                for (int i = 0; i < item.quantidade; i++)
+                {
+                    newList.Add(new ProdutoViewModel() { Id = item.Id, desconto = item.desconto, Descricao = item.Descricao, img = item.img, numeroComanda = item.numeroComanda, observacao = item.observacao, quantidade = 1, tipo = item.tipo, valor = item.valor });
+                }
+
+            }
+            return newList;
         }
 
         public void ResetarComanda(int id)

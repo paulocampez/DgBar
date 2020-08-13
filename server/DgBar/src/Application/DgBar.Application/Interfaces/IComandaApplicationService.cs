@@ -10,7 +10,7 @@ namespace DgBar.Application.Interfaces
     public interface IComandaApplicationService : IDisposable
     {
         void ResetarComanda(int id);
-        void RegistrarItens(IEnumerable<ProdutoViewModel> dtos, int comanda);
+        bool RegistrarItens(IEnumerable<ProdutoViewModel> dtos, int comanda);
         ComandaViewModel FecharComanda(int id);
         ComandaViewModel AbrirComanda();
         List<Produto> GetAllProdutos(int numeroComanda);

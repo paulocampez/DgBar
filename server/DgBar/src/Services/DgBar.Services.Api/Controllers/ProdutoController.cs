@@ -32,17 +32,5 @@ namespace DgBar.Services.Api.Controllers
         {
             _produtoApplicationService.Create(produtoVm);
         }
-
-        // PUT: api/Produto/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

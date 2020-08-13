@@ -27,6 +27,20 @@ Este é um projeto para avaliação técnica da ClearSale. Ele demonstra uso de 
 - Só é permitido 3 sucos por comanda.
 - As promoções são cumulativas e podem ser usadas nos mesmos itens.
 
+## Imagens
+<p align="center">
+  <img alt="Menu principal" src="dg1.png" />
+</p>
+<p align="center">
+  <img alt="Adicionando Produto" src="dg2.png" />
+</p>
+<p align="center">
+  <img alt="Lista de produtos" src="dg3.png" />
+</p>
+<p align="center">
+  <img alt="Nota de produtos" src="dg4.png" />
+</p>
+
 ## Autor 👦
 * **Paulo Campez** - *Desenvolvedor* - [GitHub](https://github.com/paulocampez) - [Linkedin](https://www.linkedin.com/in/paulocampez/)
 

@@ -59,7 +59,7 @@ namespace DgBar.Application.Services
             //return _mapper.Map<ComandaViewModel>(_repository.GetById(fecharComandaCommand.Id));
         }
 
-        private List<Produto> DesagrupaProdutos(List<Produto> productsList)
+        public List<Produto> DesagrupaProdutos(List<Produto> productsList)
         {
             List<Produto> newList = new List<Produto>();
             foreach (var item in productsList)
@@ -98,7 +98,7 @@ namespace DgBar.Application.Services
             return success;
         }
 
-        private List<Produto> AplicarPromocao(List<Produto> dto)
+        public List<Produto> AplicarPromocao(List<Produto> dto)
         {
             #region Cerveja
             int cervejas = 0;
@@ -148,7 +148,7 @@ namespace DgBar.Application.Services
             return success;
         }
 
-        private List<ProdutoViewModel> DesagrupaProdutoViewModel(List<ProdutoViewModel> dto)
+        public List<ProdutoViewModel> DesagrupaProdutoViewModel(List<ProdutoViewModel> dto)
         {
             List<ProdutoViewModel> newList = new List<ProdutoViewModel>();
             foreach (var item in dto)

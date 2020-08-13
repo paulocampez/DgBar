@@ -37,7 +37,8 @@ namespace DgBar.Infra.Data.Repository
         }
         public void Delete(TEntity obj)
         {
-            DbSet.Remove(obj);
+            Db.Remove(obj);
+            Db.SaveChanges();
         }
     }
 }

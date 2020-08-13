@@ -137,7 +137,11 @@ namespace DgBar.Application.Services
 
         public void ResetarComanda(int id)
         {
-
+            var allProducts = _repositoryProduto.GetAll().Where(p => p.NumeroComanda == id).ToList();
+            foreach (var item in allProducts)
+            {
+                _repositoryProduto.Delete(item);
+            }
         }
 
         public IQueryable<Comanda> GetAllComandas()

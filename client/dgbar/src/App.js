@@ -5,7 +5,7 @@ import { GlobalStyle } from "./Styles/GlobalStyle";
 import './App.css';
 import { Banner } from "./Banner/Banner";
 import { BotaoConfirma, Produto } from "./Produto/Produto";
-import { Checkout } from "./Checkout/Checkout";
+import { BotaoReset, Checkout } from "./Checkout/Checkout";
 import { Pedido } from "./Pedido/Pedido";
 import { useAbrirProduto } from "./Hooks/useAbrirProduto";
 import { useAbrirCheckout } from "./Hooks/useAbrirCheckout";
@@ -62,10 +62,24 @@ function App() {
       .catch(function (error) {
           console.log(error);
       });
-      console.log("oipau");
-      //Metodo para fechar comanda e a=brir valores
     }
     }}>{numeroComanda == 0 ? `Abrir Comanda` : `Fechar Comanda (`+numeroComanda+ `)`}  </BotaoConfirma>
+    <BotaoReset onClick={() => {
+      axios({
+        headers: { 'Content-Type': 'application/json'},
+        url: 'https://localhost:5001/api/Comanda/ResetarComanda/',
+        method: 'post',
+        data: numeroComanda
+      })
+      .then(function (response) {
+        alert("Comanda Resetada")
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+    }
+      
+    }> {"Resetar Comanda"} </BotaoReset>
     <Menu {...abrirProduto} {...comandas}/>
     
     </>

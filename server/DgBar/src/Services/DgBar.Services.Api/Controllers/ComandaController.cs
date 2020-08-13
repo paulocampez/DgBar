@@ -44,10 +44,10 @@ namespace DgBar.Services.Api.Controllers
             return _comandaApplicationService.AbrirComanda();
         }
 
-        [HttpPut("{id}")]
-        public void ResetarComanda(int id)
+        [HttpPost("ResetarComanda")]
+        public void ResetarComanda([FromBody] int numeroComanda)
         {
-            _comandaApplicationService.ResetarComanda(id);
+            _comandaApplicationService.ResetarComanda(numeroComanda);
         }
     }
 }

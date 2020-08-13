@@ -32,7 +32,24 @@ export const DialogFooter = styled.div`
   display: flex;
   justify-content: center;
 `;
-
+export const BotaoReset = styled(Title)`
+  margin: 10px;
+  color: white;
+  height: 20px;
+  bpedido-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  background-color: #02020A;
+  ${({ disabled }) =>
+    disabled &&
+    `
+    opactity: .5; 
+    background-color: grey; 
+    pointer-events: none; 
+  `}
+`;
 export const BotaoConfirma = styled(Title)`
   margin: 10px;
   color: white;

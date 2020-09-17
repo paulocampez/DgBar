@@ -11,7 +11,7 @@ A aplicação react (front-end) poderá ser acessada através do endpoint `http:
 O projeto **DgBar** simula um sistema de comanda, contendo a área de registros dos pedidos, permitindo também validações e descontos nos produtos..
 
 ## Atenção
-Este é um projeto para avaliação técnica da ClearSale. Ele demonstra uso de tecnologias e arquitetura. **Existem ajustes e melhorias a serem feitos**.
+Este é um projeto para avaliação técnica. Ele demonstra uso de tecnologias e arquitetura. **Existem ajustes e melhorias a serem feitos**.
 
 ## Fluxo
 - O usuário pode optar por Abrir a Comanda ou adicionar os pedidos.
